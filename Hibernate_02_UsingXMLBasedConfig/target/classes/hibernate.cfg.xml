@@ -5,7 +5,7 @@
     <session-factory>
         <!-- JDBC Database connection settings -->
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/hibernate_01?useSSL=false</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/hibernate_02?useSSL=false</property>
         <property name="connection.username">root</property>
         <property name="connection.password">root</property>
  
@@ -16,7 +16,7 @@
         <property name="show_sql">true</property>
         
         <!-- Drop and re-create the database schema on startup -->
-        <property name="hbm2ddl.auto">update</property>
+        <property name="hbm2ddl.auto">create</property>
         
         <!-- JDBC connection pool settings ... using built-in test pool -->
         <property name="connection.pool_size">1</property>
@@ -29,7 +29,7 @@
         <property name="hibernate.dbcp.maxWaitMillis">-1</property>
         
         <!-- XML Based Configuration -->
-        <mapping resource="student.hbm.xml"/>
+        <mapping resource="employee.hbm.xml"/>
         
         
     </session-factory>
