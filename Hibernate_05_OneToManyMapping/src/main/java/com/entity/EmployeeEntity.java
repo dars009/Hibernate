@@ -7,41 +7,55 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.UniqueConstraint;
 
-@Entity
-@Table(name = "Employee")
+@Entity(name = "ForeignKeyAssoEntity")
+@Table(name = "Employee", uniqueConstraints = { 
+		@UniqueConstraint(columnNames = "ID"),
+		@UniqueConstraint(columnNames = "EMAIL") })
 public class EmployeeEntity implements Serializable {
+
 	private static final long serialVersionUID = -1798070786993154676L;
+
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID", unique = true, nullable = false)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Integer employeeId;
-	
+
+	@Column(name = "EMAIL", unique = true, nullable = false, length = 100)
+	private String email;
+
 	@Column(name = "FIRST_NAME", unique = false, nullable = false, length = 100)
 	private String firstName;
-	
+
 	@Column(name = "LAST_NAME", unique = false, nullable = false, length = 100)
 	private String lastName;
 
-	// We will define the association here
-	@OneToOne
-	AccountEntity account;
-
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "EMPLOYEE_ID")
+	private Set<AccountEntity> accounts;
 	
+	
+	// Constructor and setter getter
 	
 	
 	public EmployeeEntity() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public EmployeeEntity(Integer employeeId, String firstName, String lastName, AccountEntity account) {
+	public EmployeeEntity(Integer employeeId, String email, String firstName, String lastName,
+			Set<AccountEntity> accounts) {
 		super();
 		this.employeeId = employeeId;
+		this.email = email;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.account = account;
+		this.accounts = accounts;
 	}
 
 	public Integer getEmployeeId() {
@@ -50,6 +64,14 @@ public class EmployeeEntity implements Serializable {
 
 	public void setEmployeeId(Integer employeeId) {
 		this.employeeId = employeeId;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getFirstName() {
@@ -68,12 +90,12 @@ public class EmployeeEntity implements Serializable {
 		this.lastName = lastName;
 	}
 
-	public AccountEntity getAccount() {
-		return account;
+	public Set<AccountEntity> getAccounts() {
+		return accounts;
 	}
 
-	public void setAccount(AccountEntity account) {
-		this.account = account;
+	public void setAccounts(Set<AccountEntity> accounts) {
+		this.accounts = accounts;
 	}
 
 	public static long getSerialversionuid() {
@@ -82,8 +104,8 @@ public class EmployeeEntity implements Serializable {
 
 	@Override
 	public String toString() {
-		return "EmployeeEntity [employeeId=" + employeeId + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", account=" + account + "]";
+		return "EmployeeEntity [employeeId=" + employeeId + ", email=" + email + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", accounts=" + accounts + "]";
 	}
-
+	
 }

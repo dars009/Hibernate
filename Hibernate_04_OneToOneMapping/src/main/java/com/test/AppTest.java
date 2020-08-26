@@ -16,7 +16,7 @@ public class AppTest {
 		// Create new Employee object
 		EmployeeEntity emp = new EmployeeEntity();
 		emp.setFirstName("Darshit");
-		emp.setLastName("Rabadiya");
+		emp.setLastName("Patel");
 
 		// Create new Account object
 		AccountEntity acc = new AccountEntity();

@@ -7,30 +7,31 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
-@Entity
-@Table(name = "Account")
+@Entity(name = "ForeignKeyAssoAccountEntity")
+@Table(name = "ACCOUNT", uniqueConstraints = { 
+		@UniqueConstraint(columnNames = "ID") })
 public class AccountEntity implements Serializable {
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -6790693372846798580L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID", unique = true, nullable = false)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Integer accountId;
 
-	@Column(name = "ACC_NO", unique = false, nullable = false, length = 100)
+	@Column(name = "ACC_NUMBER", unique = true, nullable = false, length = 100)
 	private String accountNumber;
 
-	// We will define the association here
-	@OneToOne (mappedBy = "account")
-	EmployeeEntity employee;
+	@ManyToOne
+	private EmployeeEntity employee;
 	
 	
 	
-	
-	
+	// Constructor and setter getter
 
 	public AccountEntity() {
 		// TODO Auto-generated constructor stub
@@ -76,7 +77,5 @@ public class AccountEntity implements Serializable {
 		return "AccountEntity [accountId=" + accountId + ", accountNumber=" + accountNumber + ", employee=" + employee
 				+ "]";
 	}
-	
-	
-	
+
 }
