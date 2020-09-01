@@ -4,12 +4,16 @@ import org.hibernate.Session;
 
 import com.entity.Student;
 import com.utils.HibernateUtil;
+
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
@@ -18,8 +22,9 @@ import java.util.List;
 
 public class AppTest {
 
-	@SuppressWarnings("deprecation")
+	@SuppressWarnings({ "deprecation", "unchecked" })
 	public static void main(String[] args) {
+
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 
@@ -75,23 +80,35 @@ public class AppTest {
 		for (Student student : stud) {
 			System.out.println(student);
 		}
-		
-		System.out.println("###############################################");
-		
-		Criteria crit6 = session.createCriteria(Student.class);
-		ProjectionList projList = Projections.projectionList();
-		projList.add(Projections.max("rollNumber"));
-		projList.add(Projections.min("rollNumber"));
-		projList.add(Projections.avg("rollNumber"));
-		crit6.setProjection(projList);
-		
-		List<Student> results = crit6.list();
-		
-		for (Student student : results) {
+
+		System.out.println("################ BETWEEN #####################");
+
+		Criteria crit7 = session.createCriteria(Student.class);
+		crit7.add(Restrictions.between("rollNumber", 12, 15));
+		List<Student> stud7 = crit7.list();
+		for (Student student : stud7) {
 			System.out.println(student);
 		}
-		
 
+		System.out.println("################ projection #####################");
+
+		Criteria crit8 = session.createCriteria(Student.class);
+        Projection projection1 = Projections.max("rollNumber");
+        Projection projection2 = Projections.property("studentName");
+        
+        
+        ProjectionList pList = Projections.projectionList();
+        pList.add(projection1);
+        pList.add(projection2);
+        crit8.setProjection(pList);
+        
+        List list2 = crit8.list();
+
+        Iterator it2 = list2.iterator();
+        while (it2.hasNext()) {
+            Object[] obj = (Object[]) it2.next();
+            System.out.println("Roll No : " + obj[0]+" Name : "+obj[1]);
+        }
 		session.getTransaction().commit();
 		session.close();
 	}
