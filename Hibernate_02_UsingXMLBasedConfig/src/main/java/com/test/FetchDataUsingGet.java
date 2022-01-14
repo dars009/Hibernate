@@ -5,12 +5,17 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import com.entity.Employee;
+import com.utils.HibernateUtil;
 
 public class FetchDataUsingGet {
 
 	public static void main(String[] args) {
 
-		SessionFactory factory = new Configuration().configure().buildSessionFactory();
+		//SessionFactory factory = new Configuration().configure().buildSessionFactory();
+		
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		//################################################################//
+		
 		Session sessionOne = factory.openSession();
 		sessionOne.beginTransaction();
 
@@ -36,14 +41,16 @@ public class FetchDataUsingGet {
 
 		/************************************************************************/
 
-		Session sessionThree = factory.openSession();
-		sessionThree.beginTransaction();
-
-		// second load() method example
-		Employee emp2 = (Employee) sessionThree.get("com.entity.Employee", empId);
-		System.out.println(emp2.getFirstName() + " - " + emp2.getLastName());
-
-		sessionThree.getTransaction().commit();
+		/*
+		 * Session sessionThree = factory.openSession();
+		 * sessionThree.beginTransaction();
+		 * 
+		 * // second load() method example Employee emp2 = (Employee)
+		 * sessionThree.get("com.entity.Employee", empId);
+		 * System.out.println(emp2.getFirstName() + " - " + emp2.getLastName());
+		 * 
+		 * sessionThree.getTransaction().commit();
+		 */
 
 		/*********************** Method Doesn't Support *****************************/
 
