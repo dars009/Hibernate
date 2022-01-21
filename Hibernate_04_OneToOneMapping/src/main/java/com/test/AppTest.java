@@ -8,41 +8,30 @@ import com.utils.HibernateUtil;
 
 public class AppTest {
 
-	public static void main(String[] args) {
-
+	public static EmployeeEntity addEmployee(String fName, String lName, String acNo) {
 		Session sessionOne = HibernateUtil.getSessionFactory().openSession();
 		sessionOne.beginTransaction();
-
 		// Create new Employee object
 		EmployeeEntity emp = new EmployeeEntity();
-		emp.setFirstName("Darshit");
-		emp.setLastName("Patel");
-
-		// Create new Account object
+		emp.setFirstName(fName);
+		emp.setLastName(lName);
+		// Create new Account object for add it in to employee
 		AccountEntity acc = new AccountEntity();
-		acc.setAccountNumber("12310100133486");
-		
+		acc.setAccountNumber(acNo);
 		emp.setAccount(acc);
-		//acc.setEmployee(emp);
-
+		// Save data in to a database here it will fire insert query
 		sessionOne.save(acc);
 		sessionOne.save(emp);
+		// data will store permanently in to database by using commit
 		sessionOne.getTransaction().commit();
+		// sessionOne.close();
+		return sessionOne.get(EmployeeEntity.class, emp.getEmployeeId());
+	}
 
-		Integer genEmpId = emp.getEmployeeId();
-		Integer genAccId = acc.getAccountId();
+	public static void main(String[] args) {
 
-		Session sessionTwo = HibernateUtil.getSessionFactory().openSession();
-		sessionTwo.beginTransaction();
-		EmployeeEntity employee = (EmployeeEntity) sessionTwo.get(EmployeeEntity.class, genEmpId);
-		AccountEntity account = (AccountEntity) sessionTwo.get(AccountEntity.class, genAccId);
+		EmployeeEntity employeeData = addEmployee("Ram", "Ram", "1234567890");
+		System.out.println(employeeData);
 
-		System.out.println(employee.getEmployeeId());
-		System.out.println(employee.getAccount().getAccountNumber());
-		System.out.println(account.getAccountId());
-		System.out.println(account.getEmployee().getEmployeeId());
-
-		sessionOne.close();
-		sessionTwo.close();
 	}
 }
