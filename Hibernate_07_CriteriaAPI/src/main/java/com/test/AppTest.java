@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
@@ -90,6 +91,7 @@ public class AppTest {
 			System.out.println(student);
 		}
 
+		
 		System.out.println("################ projection #####################");
 
 		Criteria crit8 = session.createCriteria(Student.class);
@@ -109,6 +111,13 @@ public class AppTest {
             Object[] obj = (Object[]) it2.next();
             System.out.println("Roll No : " + obj[0]+" Name : "+obj[1]);
         }
+        
+        
+        System.out.println("##############QUERY EXAMPLE#################");
+        Query<Student> q=session.createNativeQuery("select * from student", Student.class);
+        List<Student> ll=q.list();
+        System.out.println("printing students" + ll);
+        
 		session.getTransaction().commit();
 		session.close();
 	}
