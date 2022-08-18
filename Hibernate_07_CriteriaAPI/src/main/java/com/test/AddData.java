@@ -34,6 +34,7 @@ public class AddData {
 		session.save(s7);
 		//session.getTransaction().commit();
 		
+		
 		Criteria criteria = session.createCriteria(Student.class);
 		criteria.add(Restrictions.eq("studentName", "Darshit"));
 

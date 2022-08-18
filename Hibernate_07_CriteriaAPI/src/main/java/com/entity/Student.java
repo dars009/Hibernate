@@ -9,6 +9,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@EqualsAndHashCode
 @Entity
 @Table(name = "STUDENT")
 public class Student implements Serializable {
@@ -25,53 +38,4 @@ public class Student implements Serializable {
 	@Column(name = "COURSE")
 	private String course;
 
-	public Student() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	
-	public Student(int id, String studentName, int rollNumber, String course) {
-		super();
-		this.id = id;
-		this.studentName = studentName;
-		this.rollNumber = rollNumber;
-		this.course = course;
-	}
-
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getStudentName() {
-		return studentName;
-	}
-
-	public void setStudentName(String studentName) {
-		this.studentName = studentName;
-	}
-
-	public int getRollNumber() {
-		return rollNumber;
-	}
-
-	public void setRollNumber(int rollNumber) {
-		this.rollNumber = rollNumber;
-	}
-
-	public String getCourse() {
-		return course;
-	}
-
-	public void setCourse(String course) {
-		this.course = course;
-	}
-
-	public String toString() {
-		return "ROLL Number: " + rollNumber + "| Name: " + studentName + "| Course: " + course;
-	}
 }
