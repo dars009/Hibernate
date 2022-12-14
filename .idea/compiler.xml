@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Hibernate_05_OneToManyMapping" />
+        <module name="Hibernate_03_UsingFullyJavaBasedConfig" />
+        <module name="Hibernate_07_CriteriaAPI" />
+        <module name="Hibernate_04_OneToOneMapping" />
+        <module name="Hibernate_09_SimplyfiedConnection" />
+        <module name="Hibernate_08_ManyToOneMapping" />
+        <module name="Hibernate_01_UsingJavaBasedConfig" />
+        <module name="Hibernate_02_UsingXMLBasedConfig" />
+        <module name="Hibernate_06_ManyToManyMapping" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Hibernate_01_UsingJavaBasedConfig" target="1.8" />
+      <module name="Hibernate_02_UsingXMLBasedConfig" target="11" />
+      <module name="Hibernate_03_UsingFullyJavaBasedConfig" target="11" />
+      <module name="Hibernate_04_OneToOneMapping" target="11" />
+      <module name="Hibernate_05_OneToManyMapping" target="1.8" />
+      <module name="Hibernate_06_ManyToManyMapping" target="1.8" />
+      <module name="Hibernate_07_CriteriaAPI" target="1.8" />
+      <module name="Hibernate_08_ManyToOneMapping" target="1.8" />
+      <module name="Hibernate_09_SimplyfiedConnection" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

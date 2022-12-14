@@ -39,7 +39,7 @@ public class AppTest {
         
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             List<Student> students = session.createQuery("from Student", Student.class).list();
-            
+
             students.forEach(s->System.out.println("FirstName >>>"+ s.getFirstName() +   "LastName>>>"  + s.getLastName() +  "Email>>>" +   s.getEmail()));
             
         } catch (Exception e) {

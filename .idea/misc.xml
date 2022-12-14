@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/Hibernate_02_UsingXMLBasedConfig/pom.xml" />
+        <option value="$PROJECT_DIR$/Hibernate_03_UsingFullyJavaBasedConfig/pom.xml" />
+        <option value="$PROJECT_DIR$/Hibernate_04_OneToOneMapping/pom.xml" />
+        <option value="$PROJECT_DIR$/Hibernate_05_OneToManyMapping/pom.xml" />
+        <option value="$PROJECT_DIR$/Hibernate_06_ManyToManyMapping/pom.xml" />
+        <option value="$PROJECT_DIR$/Hibernate_07_CriteriaAPI/pom.xml" />
+        <option value="$PROJECT_DIR$/Hibernate_08_ManyToOneMapping/pom.xml" />
+        <option value="$PROJECT_DIR$/Hibernate_09_SimplyfiedConnection/pom.xml" />
+        <option value="$PROJECT_DIR$/Hibernate_01_UsingJavaBasedConfig/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+  <component name="ProjectType">
+    <option name="id" value="jpab" />
+  </component>
+</project>

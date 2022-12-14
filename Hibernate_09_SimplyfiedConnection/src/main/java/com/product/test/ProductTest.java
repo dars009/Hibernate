@@ -23,11 +23,8 @@ public class ProductTest {
 		//SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
 
 		// type 2
-		Configuration cfg= new Configuration();
-		cfg.configure();
-		SessionFactory sf= cfg.buildSessionFactory();
-		Session session = sf.openSession();
-		
+
+		Session session = HibernateUtil.getSession();
 		//Session session = sessionFactory.openSession();
 		Transaction t = session.beginTransaction();
 		Product p = new Product(1, "Laptop", "dell");
